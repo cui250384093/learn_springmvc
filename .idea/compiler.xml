@@ -17,7 +17,7 @@
     <bytecodeTargetLevel>
       <module name="day1" target="1.8" />
       <module name="day2" target="1.8" />
-      <module name="demo6" target="1.7" />
+      <module name="demo6" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
