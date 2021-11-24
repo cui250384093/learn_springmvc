@@ -16,5 +16,9 @@ public class JspController {
         return "success";
     }
 
+    @RequestMapping("/test_rest")
+    public String testRest() {
+        return "test_rest";
+    }
 
 }

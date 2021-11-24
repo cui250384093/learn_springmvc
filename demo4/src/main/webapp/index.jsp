@@ -12,8 +12,6 @@
 </head>
 <body>
 <h2>Index</h2>
-<%--<a href="${pageContext.request.contextPath}/success">success.jsp</a>--%>
-"pageContext.request.contextPath的值是"${pageContext.request.contextPath}<br/>
-<a href="${pageContext.request.contextPath}/success">success.jsp</a>
+<a href="${pageContext.request.contextPath}/test_rest">test rest</a>
 </body>
 </html>
