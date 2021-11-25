@@ -12,7 +12,10 @@
 </head>
 <body>
     <h2>File</h2>
-    <a href="${pageContext.request.contextPath}/testUpload">testUpload</a><br/>
     <a href="${pageContext.request.contextPath}/testDownload">testDownload</a><br/>
+    <form action="${pageContext.request.contextPath}/testUpload" method="post" enctype="multipart/form-data">
+        head: <input type="file" name="photo" /><br/>
+        <input type="submit" value="upload" />
+    </form><br/>
 </body>
 </html>
