@@ -11,6 +11,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.*;
+import java.util.UUID;
 
 /**
  * @author candk
@@ -81,6 +82,11 @@ public class HttpController {
     public String testUpload(MultipartFile photo, HttpSession session) throws IOException {
         System.out.println(photo.getName());
         String fileName = photo.getOriginalFilename();
+        System.out.println(fileName);
+        String suffixName = fileName.substring(fileName.lastIndexOf("."));
+        System.out.println(suffixName);
+        String uuid = UUID.randomUUID().toString().replaceAll("-", "");
+        fileName = uuid + suffixName;
         ServletContext servletContext = session.getServletContext();
         String contextPath = servletContext.getContextPath();
         System.out.println(contextPath);

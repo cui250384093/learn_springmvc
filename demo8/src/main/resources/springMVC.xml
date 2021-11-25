@@ -13,12 +13,17 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <!--SpringMVC中的拦截器用于拦截控制器方法的执行
+    SpringMVC中的拦截器需要实现HandlerInterceptor
+    SpringMVC的拦截器必须在SpringMVC的配置文件中进行配置：-->
+
+
     <!--必须通过文件解析器的解析才能将文件转换为MultipartFile对象-->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 
     <mvc:view-controller path="/" view-name="index"/>
-    <mvc:view-controller path="/success" view-name="success"/>
-    <mvc:view-controller path="/file" view-name="file"/>
+<!--    <mvc:view-controller path="/success" view-name="success"/>-->
+<!--    <mvc:view-controller path="/file" view-name="file"/>-->
 
     <mvc:default-servlet-handler />
 
