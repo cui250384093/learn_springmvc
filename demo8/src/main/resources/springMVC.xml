@@ -21,9 +21,23 @@
     <!--必须通过文件解析器的解析才能将文件转换为MultipartFile对象-->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 
+    <!--SpringMVC的拦截器-->
+    <!-- 以上两种配置方式都是对DispatcherServlet所处理的所有的请求进行拦截 -->
+    <mvc:interceptors>
+    <!--        <bean class="com.yl.mvc.interceptor.FirstInterceptor"></bean>-->
+    <!--        <ref bean="firstInterceptor"></ref>-->
+        <!--
+	以上配置方式可以通过ref或bean标签设置拦截器，通过mvc:mapping设置需要拦截的请求，通过mvc:exclude-mapping设置需要排除的请求，即不需要拦截的请求
+-->
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/"/>
+            <ref bean="firstInterceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors>
+
     <mvc:view-controller path="/" view-name="index"/>
-<!--    <mvc:view-controller path="/success" view-name="success"/>-->
-<!--    <mvc:view-controller path="/file" view-name="file"/>-->
+
 
     <mvc:default-servlet-handler />
 

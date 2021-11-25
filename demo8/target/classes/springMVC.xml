@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <context:component-scan base-package="com.yl.mvc"/>
+
+    <!-- 配置jsp视图解析器 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/templates/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!--SpringMVC中的拦截器用于拦截控制器方法的执行
+    SpringMVC中的拦截器需要实现HandlerInterceptor
+    SpringMVC的拦截器必须在SpringMVC的配置文件中进行配置：-->
+
+
+    <!--必须通过文件解析器的解析才能将文件转换为MultipartFile对象-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+
+    <!--SpringMVC的拦截器-->
+    <!-- 以上两种配置方式都是对DispatcherServlet所处理的所有的请求进行拦截 -->
+    <mvc:interceptors>
+<!--        <bean class="com.yl.mvc.interceptor.FirstInterceptor"></bean>-->
+<!--        <ref bean="firstInterceptor"></ref>-->
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/"/>
+            <ref bean="firstInterceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <mvc:view-controller path="/" view-name="index"/>
+
+
+    <mvc:default-servlet-handler />
+
+    <mvc:annotation-driven />
+</beans>
